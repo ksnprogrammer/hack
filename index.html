@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unknow Smile - Minion Laugh</title>
+    
+    <!-- CSS Styles -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -47,29 +50,27 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Unknow Smile - Minion Laugh</h1>
     <p>Experience the mischievous laughter of minions!</p>
     
     <!-- Minions Laughing GIF -->
-    <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
+    <img src="/giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
     
     <!-- Audio Element with Controls -->
     <audio id="minion-laugh" controls autoplay>
-        <source src="minion_laughing.mp3" type="audio/mpeg">
+        <source src="/minion_laughing.mp3" type="audio/mpeg">
     </audio>
     
     <script>
         // Check autoplay policy and adjust playback
         function adjustPlayback() {
             if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
-                // Autoplay is allowed, no need to mute
                 document.getElementById('minion-laugh').muted = false;
             } else if (navigator.getAutoplayPolicy("mediaelement") === "allowed-muted") {
-                // Autoplay is allowed but muted
                 document.getElementById('minion-laugh').muted = true;
             } else {
-                // Autoplay is disallowed, show controls
                 document.getElementById('minion-laugh').controls = true;
             }
         }
@@ -81,4 +82,5 @@
         window.addEventListener('click', adjustPlayback);
     </script>
 </body>
+
 </html>
