@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacked by Unknow Smile - Minion Invasion</title>
+    <title>Hacked by Unknow Smile - Universal Minion Laugh</title>
     <style>
         /* CSS Styles */
         body {
@@ -40,28 +40,36 @@
 </head>
 <body>
     <h1>Hacked by Unknow Smile</h1>
-    <p>Minions are invading your digital space. Resistance is futile!</p>
+    <p>Minions are taking over, and their laughter will echo across all browsers!</p>
     
     <!-- Minions Laughing GIF -->
     <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
     
-    <audio id="minion-laugh" autoplay loop>
-        <!-- Multiple sources for browser compatibility -->
+    <!-- Multiple audio elements for different browsers -->
+    <audio id="minion-laugh-mp3" autoplay loop style="display: none;">
         <source src="minion_laughing.mp3" type="audio/mpeg">
-        
-        Your browser does not support the audio element.
     </audio>
     
+    
     <script>
-        // JavaScript to ensure audio plays across all browsers
-        var audio = document.getElementById("minion-laugh");
-        if (audio.canPlayType("audio/mpeg") !== "" || audio.canPlayType("audio/ogg") !== "") {
-            audio.play().catch(function(error) {
-                console.error("Audio playback failed:", error);
-            });
-        } else {
-            console.error("Browser doesn't support audio playback.");
+        // Function to attempt audio playback
+        function playAudio() {
+            var audioElements = document.querySelectorAll('audio');
+            for (var i = 0; i < audioElements.length; i++) {
+                var audio = audioElements[i];
+                audio.play().then(() => {
+                    // Loop the audio and show a success message
+                    audio.loop = true;
+                    console.log("Autoplay and loop succeeded!");
+                    return;
+                }).catch(error => {
+                    console.error("Audio playback failed:", error);
+                });
+            }
         }
+        
+        // Initial attempt to autoplay audio
+        playAudio();
     </script>
 </body>
 </html>
