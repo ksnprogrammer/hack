@@ -45,31 +45,38 @@
     <!-- Minions Laughing GIF -->
     <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
     
-    <!-- Multiple audio elements for different browsers -->
-    <audio id="minion-laugh-mp3" autoplay loop style="display: none;">
-        <source src="minion_laughing.mp3" type="audio/mpeg">
-    </audio>
-    
+    <button id="play-audio-button">Play Minion Laugh</button>
     
     <script>
-        // Function to attempt audio playback
+        var audioContext;
+        var audioBuffer;
+        
+        function initAudio() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            fetch('minions_laughing.mp3')
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
+                    audioBuffer = buffer;
+                }))
+                .catch(error => console.error("Error loading audio:", error));
+        }
+        
         function playAudio() {
-            var audioElements = document.querySelectorAll('audio');
-            for (var i = 0; i < audioElements.length; i++) {
-                var audio = audioElements[i];
-                audio.play().then(() => {
-                    // Loop the audio and show a success message
-                    audio.loop = true;
-                    console.log("Autoplay and loop succeeded!");
-                    return;
-                }).catch(error => {
-                    console.error("Audio playback failed:", error);
-                });
+            if (audioBuffer) {
+                var source = audioContext.createBufferSource();
+                source.buffer = audioBuffer;
+                source.connect(audioContext.destination);
+                source.loop = true;
+                source.start(0);
+                console.log("Audio playback started!");
+            } else {
+                console.error("Audio not loaded yet.");
             }
         }
         
-        // Initial attempt to autoplay audio
-        playAudio();
+        initAudio();
+        
+        document.getElementById('play-audio-button').addEventListener('click', playAudio);
     </script>
 </body>
 </html>
