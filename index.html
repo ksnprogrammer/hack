@@ -3,100 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacked by Unknow Smile - Minion Mayhem</title>
+    <title>Unknow Smile - Minion Laugh</title>
     <style>
-        /* CSS Styles */
-        /* ... (your existing CSS styles) */
- /* CSS Styles */
- body {
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 5px #ff0000;
-        }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-        #minion-laugh-gif {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 5rem;
-            }
-            p {
-                font-size: 1.2rem;
-            }
-        }
-   
-
+        /* ... [Same CSS styles as before] ... */
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hacked by Unknow Smile</h1>
-        <p>Brace yourselves, the minions are here to wreak havoc!</p>
+    <h1>Unknow Smile - Minion Laugh</h1>
+    <p>Experience the mischievous laughter of minions!</p>
+    
+    <!-- Minions Laughing GIF -->
+    <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
+    
+    <!-- Audio Element with Controls -->
+    <audio id="minion-laugh" controls autoplay>
+        <source src="minion_laughing.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        // Check autoplay policy and adjust playback
+        function adjustPlayback() {
+            if (navigator.getAutoplayPolicy("mediaelement") === "allowed") {
+                // Autoplay is allowed, no need to mute
+                document.getElementById('minion-laugh').muted = false;
+            } else if (navigator.getAutoplayPolicy("mediaelement") === "allowed-muted") {
+                // Autoplay is allowed but muted
+                document.getElementById('minion-laugh').muted = true;
+            } else {
+                // Autoplay is disallowed, show controls
+                document.getElementById('minion-laugh').controls = true;
+            }
+        }
         
-        <!-- Minions Laughing GIF -->
-        <img src="ksnprogrammer/hack/giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
+        // Attempt automatic playback
+        document.addEventListener('DOMContentLoaded', adjustPlayback);
         
-        <audio id="minion-laugh" style="display: none;">
-            <source src="ksnprogrammer/hack/minion_laughing.mp3" type="audio/mpeg">
-        </audio>
-        
-        <script>
-            // ... (your existing JavaScript code)
-            var audioContext;
-var audioBuffer;
-
-function initAudio() {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    fetch('ksnprogrammer/hack/minion_laughing.mp3')
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
-            audioBuffer = buffer;
-            playAudio();
-        }))
-        .catch(error => console.error("Error loading audio:", error));
-}
-
-function playAudio() {
-    if (audioBuffer) {
-        var source = audioContext.createBufferSource();
-        source.buffer = audioBuffer;
-        source.connect(audioContext.destination);
-        source.loop = true;
-        source.start(0);
-        console.log("Minion laughter unleashed using Web Audio API!");
-    } else {
-        console.error("Audio not loaded yet. Minions are waiting...");
-    }
-}
-
-// Attempt automatic playback using Web Audio API
-initAudio();
-
-// Fallback for browsers with autoplay restrictions
-document.addEventListener('DOMContentLoaded', function() {
-    var audioElement = document.getElementById('minion-laugh');
-    audioElement.play().then(() => {
-        console.log("Minions are laughing maniacally using <audio> element!");
-    }).catch(error => {
-        console.error("Autoplay failed. Minions are disappointed:", error);
-    });
-});
-
-        </script>
-    </div>
+        // Listen for user interaction to enable playback
+        window.addEventListener('click', adjustPlayback);
+    </script>
 </body>
 </html>
