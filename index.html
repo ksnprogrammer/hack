@@ -45,7 +45,9 @@
     <!-- Minions Laughing GIF -->
     <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
     
-    <button id="play-audio-button">Play Minion Laugh</button>
+    <audio id="minion-laugh" style="display: none;">
+        <source src="minion_laughing.mp3" type="audio/mpeg">
+    </audio>
     
     <script>
         var audioContext;
@@ -57,6 +59,7 @@
                 .then(response => response.arrayBuffer())
                 .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
                     audioBuffer = buffer;
+                    playAudio();
                 }))
                 .catch(error => console.error("Error loading audio:", error));
         }
@@ -68,15 +71,24 @@
                 source.connect(audioContext.destination);
                 source.loop = true;
                 source.start(0);
-                console.log("Audio playback started!");
+                console.log("Audio playback started using Web Audio API!");
             } else {
                 console.error("Audio not loaded yet.");
             }
         }
         
+        // Attempt automatic playback using Web Audio API
         initAudio();
         
-        document.getElementById('play-audio-button').addEventListener('click', playAudio);
+        // Fallback for browsers that support autoplay without user interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('minion-laugh');
+            audio.play().then(() => {
+                console.log("Autoplay succeeded using <audio> element!");
+            }).catch(error => {
+                console.error("Autoplay failed:", error);
+            });
+        });
     </script>
 </body>
 </html>
