@@ -53,7 +53,7 @@
         
         function initAudio() {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            fetch('minions_laughing.mp3')
+            fetch('minion_laughing.mp3')
                 .then(response => response.arrayBuffer())
                 .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
                     audioBuffer = buffer;
