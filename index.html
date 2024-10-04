@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacked by Unknow Smile - Minion Mayhem</title>
+    <title>Hacked by Unknow Smile - Minion Invasion</title>
     <style>
         /* CSS Styles */
         body {
@@ -11,41 +11,54 @@
             background-color: #000;
             color: #fff;
             text-align: center;
-            padding-top: 20vh;
+            padding: 20px;
+            margin: 0;
         }
         h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 5px #ff0000;
         }
         p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
         }
         #minion-laugh-gif {
             max-width: 100%;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 5rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Hacked by Unknow Smile</h1>
-    <p>Minions are taking over, one website at a time!</p>
+    <p>Minions are invading your digital space. Resistance is futile!</p>
     
     <!-- Minions Laughing GIF -->
     <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
     
     <audio id="minion-laugh" autoplay loop>
+        <!-- Multiple sources for browser compatibility -->
         <source src="minion_laughing.mp3" type="audio/mpeg">
+        
         Your browser does not support the audio element.
     </audio>
     
     <script>
-        // JavaScript to ensure audio plays
+        // JavaScript to ensure audio plays across all browsers
         var audio = document.getElementById("minion-laugh");
-        if (audio.canPlayType("audio/mpeg") !== "") {
-            audio.play();
+        if (audio.canPlayType("audio/mpeg") !== "" || audio.canPlayType("audio/ogg") !== "") {
+            audio.play().catch(function(error) {
+                console.error("Audio playback failed:", error);
+            });
         } else {
             console.error("Browser doesn't support audio playback.");
         }
