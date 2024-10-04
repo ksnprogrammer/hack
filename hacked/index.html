@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked by Unknow Smile - Minions Takeover</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding-top: 20vh;
+        }
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #ff0000;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        #minion-laugh-gif {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hacked by Unknow Smile</h1>
+    <p>Minions are here to steal your data and your laughter!</p>
+    
+    <!-- Minions Laughing GIF -->
+    <div id="minion-laugh-gif">
+        <div class="tenor-gif-embed" data-postid="21196936" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
+            <a href="https://tenor.com/view/minions-minion-laughing-hysterically-laughing-laugh-gif-21196936">Minions Laughing Hysterically GIF</a>
+            <a href="https://tenor.com/search/minions-gifs">Minions GIFs</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+    
+    <audio id="minion-laugh" autoplay loop>
+        <source src="minions_laugh.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // JavaScript to ensure audio plays
+        var audio = document.getElementById("minion-laugh");
+        if (audio.canPlayType("audio/mpeg") !== "") {
+            audio.play();
+        } else {
+            console.error("Browser doesn't support audio playback.");
+        }
+    </script>
+</body>
+</html>
