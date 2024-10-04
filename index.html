@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacked by Unknow Smile - Universal Minion Laugh</title>
+    <title>Hacked by Unknow Smile - Minion Mayhem</title>
     <style>
         /* CSS Styles */
-        body {
+        /* ... (your existing CSS styles) */
+ /* CSS Styles */
+ body {
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             background-color: #000;
             color: #fff;
@@ -36,59 +38,65 @@
                 font-size: 1.2rem;
             }
         }
+   
+
     </style>
 </head>
 <body>
-    <h1>Hacked by Unknow Smile</h1>
-    <p>Minions are taking over, and their laughter will echo across all browsers!</p>
-    
-    <!-- Minions Laughing GIF -->
-    <img src="giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
-    
-    <audio id="minion-laugh" style="display: none;">
-        <source src="minion_laughing.mp3" type="audio/mpeg">
-    </audio>
-    
-    <script>
-        var audioContext;
-        var audioBuffer;
+    <div class="container">
+        <h1>Hacked by Unknow Smile</h1>
+        <p>Brace yourselves, the minions are here to wreak havoc!</p>
         
-        function initAudio() {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            fetch('minion_laughing.mp3')
-                .then(response => response.arrayBuffer())
-                .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
-                    audioBuffer = buffer;
-                    playAudio();
-                }))
-                .catch(error => console.error("Error loading audio:", error));
-        }
+        <!-- Minions Laughing GIF -->
+        <img src="ksnprogrammer/hack/giphy.gif" alt="Minions Laughing" id="minion-laugh-gif">
         
-        function playAudio() {
-            if (audioBuffer) {
-                var source = audioContext.createBufferSource();
-                source.buffer = audioBuffer;
-                source.connect(audioContext.destination);
-                source.loop = true;
-                source.start(0);
-                console.log("Audio playback started using Web Audio API!");
-            } else {
-                console.error("Audio not loaded yet.");
-            }
-        }
+        <audio id="minion-laugh" style="display: none;">
+            <source src="ksnprogrammer/hack/minion_laughing.mp3" type="audio/mpeg">
+        </audio>
         
-        // Attempt automatic playback using Web Audio API
-        initAudio();
-        
-        // Fallback for browsers that support autoplay without user interaction
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('minion-laugh');
-            audio.play().then(() => {
-                console.log("Autoplay succeeded using <audio> element!");
-            }).catch(error => {
-                console.error("Autoplay failed:", error);
-            });
-        });
-    </script>
+        <script>
+            // ... (your existing JavaScript code)
+            var audioContext;
+var audioBuffer;
+
+function initAudio() {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    fetch('ksnprogrammer/hack/minion_laughing.mp3')
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer, function(buffer) {
+            audioBuffer = buffer;
+            playAudio();
+        }))
+        .catch(error => console.error("Error loading audio:", error));
+}
+
+function playAudio() {
+    if (audioBuffer) {
+        var source = audioContext.createBufferSource();
+        source.buffer = audioBuffer;
+        source.connect(audioContext.destination);
+        source.loop = true;
+        source.start(0);
+        console.log("Minion laughter unleashed using Web Audio API!");
+    } else {
+        console.error("Audio not loaded yet. Minions are waiting...");
+    }
+}
+
+// Attempt automatic playback using Web Audio API
+initAudio();
+
+// Fallback for browsers with autoplay restrictions
+document.addEventListener('DOMContentLoaded', function() {
+    var audioElement = document.getElementById('minion-laugh');
+    audioElement.play().then(() => {
+        console.log("Minions are laughing maniacally using <audio> element!");
+    }).catch(error => {
+        console.error("Autoplay failed. Minions are disappointed:", error);
+    });
+});
+
+        </script>
+    </div>
 </body>
 </html>
